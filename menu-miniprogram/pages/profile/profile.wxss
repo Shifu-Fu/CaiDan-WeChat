@@ -1,0 +1,35 @@
+.page { padding-bottom: 40rpx; min-height: 100vh; }
+.user-card { display: flex; align-items: center; background: #fff; padding: 40rpx 32rpx; }
+.avatar-btn {
+  width: 110rpx; height: 110rpx; border-radius: 50%; padding: 0; margin: 0;
+  background: #fdf0ec; overflow: hidden; flex: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.avatar-btn::after { border: none; }
+.avatar-img { width: 110rpx; height: 110rpx; }
+.user-meta { margin-left: 24rpx; flex: 1; min-width: 0; }
+.user-name-input { font-size: 34rpx; font-weight: 500; color: #222; height: 48rpx; }
+.nick-ph { color: #bbb; font-weight: 400; }
+.user-sub { font-size: 23rpx; color: #999; margin-top: 8rpx; }
+
+.entry-grid { display: flex; flex-wrap: wrap; gap: 16rpx; padding: 24rpx; }
+.entry-card {
+  width: calc(50% - 8rpx); box-sizing: border-box; background: #fff; border-radius: 16rpx; padding: 28rpx 20rpx;
+  display: flex; flex-direction: column; align-items: flex-start;
+  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.03);
+}
+.entry-icon { font-size: 48rpx; line-height: 1; }
+.entry-title { font-size: 28rpx; font-weight: 500; color: #222; margin-top: 16rpx; }
+.entry-desc { font-size: 21rpx; color: #999; margin-top: 8rpx; line-height: 1.4; }
+
+.section-title { font-size: 30rpx; font-weight: 500; color: #222; padding: 24rpx 28rpx 8rpx; }
+.inline-loading { padding: 40rpx; text-align: center; color: #999; font-size: 25rpx; }
+.order-card { background: #fff; border-radius: 16rpx; margin: 12rpx 24rpx; padding: 24rpx; }
+.order-head { display: flex; justify-content: space-between; align-items: center; }
+.order-no { font-size: 27rpx; color: #333; font-weight: 500; }
+.order-status { font-size: 23rpx; color: #e05a36; background: #fdf0ec; padding: 6rpx 18rpx; border-radius: 20rpx; }
+.order-items { font-size: 24rpx; color: #888; line-height: 1.5; margin: 16rpx 0; }
+.order-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1rpx solid #f0f0f0; padding-top: 16rpx; }
+.order-time { font-size: 22rpx; color: #aaa; }
+.order-total { font-size: 30rpx; color: #e05a36; font-weight: 500; }
+.state-wrap.small { padding: 60rpx 40rpx; }

@@ -1,0 +1,66 @@
+.page { padding-bottom: 40rpx; min-height: 100vh; }
+.intro { padding: 32rpx 28rpx 16rpx; }
+.intro-title { font-size: 38rpx; font-weight: 500; color: #222; }
+.intro-desc { font-size: 25rpx; color: #999; margin-top: 8rpx; line-height: 1.5; }
+
+.upload-box {
+  margin: 16rpx 24rpx;
+  height: 360rpx;
+  border: 2rpx dashed #d0d3d8;
+  border-radius: 20rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.upload-icon { font-size: 90rpx; color: #e05a36; line-height: 1; }
+.upload-title { font-size: 30rpx; color: #555; margin-top: 20rpx; }
+.upload-desc { font-size: 23rpx; color: #aaa; margin-top: 10rpx; }
+
+.preview-box { margin: 16rpx 24rpx; background: #fff; border-radius: 20rpx; padding: 20rpx; }
+.preview-img { width: 100%; height: 440rpx; border-radius: 12rpx; background: #f5f5f5; }
+.preview-actions { display: flex; justify-content: center; margin-top: 16rpx; }
+.re-choose { color: #e05a36; font-size: 26rpx; padding: 12rpx 32rpx; }
+
+.recognize-btn {
+  margin: 0 24rpx 16rpx;
+  background: #e05a36;
+  color: #fff;
+  text-align: center;
+  padding: 26rpx 0;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+}
+.recognize-btn.disabled { opacity: 0.6; }
+
+.loading-wrap { display: flex; flex-direction: column; align-items: center; padding: 60rpx 0; }
+.spinner {
+  width: 56rpx; height: 56rpx;
+  border: 5rpx solid #f5d5cc;
+  border-top-color: #e05a36;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text { font-size: 25rpx; color: #999; margin-top: 20rpx; }
+
+.result-card { background: #fff; border-radius: 16rpx; margin: 16rpx 24rpx; padding: 28rpx; }
+.result-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20rpx; }
+.result-badge { background: #fdf0ec; color: #e05a36; font-size: 24rpx; padding: 8rpx 22rpx; border-radius: 20rpx; }
+.result-conf { font-size: 22rpx; color: #999; }
+.field { margin-top: 20rpx; }
+.field-label { font-size: 24rpx; color: #888; margin-bottom: 10rpx; }
+.field-input { background: #f5f6f8; border-radius: 10rpx; padding: 20rpx; font-size: 28rpx; color: #222; }
+.result-note { font-size: 22rpx; color: #aaa; line-height: 1.5; margin-top: 24rpx; }
+.save-btn { background: #e05a36; color: #fff; text-align: center; padding: 24rpx 0; border-radius: 44rpx; font-size: 29rpx; margin-top: 24rpx; }
+
+.error-tip { margin: 16rpx 24rpx; padding: 20rpx; background: #fdecec; color: #c0392b; font-size: 24rpx; border-radius: 12rpx; line-height: 1.5; }
+
+.tips-card { background: #fff; border-radius: 16rpx; margin: 24rpx; padding: 28rpx; }
+.tips-title { font-size: 28rpx; font-weight: 500; color: #333; margin-bottom: 16rpx; }
+.tips-text { font-size: 24rpx; color: #888; line-height: 1.9; }
+
+.matting-btn { color: #e05a36; font-size: 25rpx; padding: 12rpx 24rpx; border: 1rpx solid #e05a36; border-radius: 24rpx; }
+.matting-btn.done { background: #e05a36; color: #fff; border-color: #e05a36; }
+.matting-tip { font-size: 21rpx; color: #aaa; margin-top: 16rpx; line-height: 1.5; }

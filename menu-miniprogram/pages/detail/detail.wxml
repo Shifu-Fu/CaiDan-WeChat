@@ -1,0 +1,90 @@
+<view class="page" wx:if="{{dish}}">
+  <image class="hero-img" src="{{dish.image}}" mode="aspectFill" />
+
+  <view class="detail-card">
+    <view class="detail-head">
+      <view class="detail-name">{{dish.name}}</view>
+      <view class="detail-price"><text class="dec">¥</text>{{dish.price}}</view>
+    </view>
+    <view class="detail-meta">
+      <text class="cat-tag">{{dish.category}}</text>
+      <text wx:if="{{dish.edited}}" class="edited-tag">已修改</text>
+      <view class="edit-link" bindtap="openEdit">✎ 编辑菜品</view>
+    </view>
+
+    <view class="block" wx:if="{{dish.ingredients.length > 0}}">
+      <view class="block-title">主要食材</view>
+      <view class="ing-tags">
+        <text class="ing-tag" wx:for="{{dish.ingredients}}" wx:key="*this">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 评论区 -->
+  <view class="comment-section">
+    <view class="comment-head">
+      <view class="block-title">食客评论 <text class="comment-count">{{comments.length}}</text></view>
+    </view>
+    <!-- 发表评论 -->
+    <view class="comment-compose">
+      <input class="comment-author" value="{{authorName}}" bindinput="onAuthorInput" placeholder="你的称呼（选填）" />
+      <input class="comment-input" value="{{commentText}}" bindinput="onCommentInput" placeholder="说说这道菜怎么样…" confirm-type="send" bindconfirm="submitComment" />
+      <view class="comment-send" bindtap="submitComment">发送</view>
+    </view>
+    <!-- 评论列表 -->
+    <view wx:if="{{comments.length > 0}}">
+      <view class="comment-item" wx:for="{{comments}}" wx:key="id">
+        <view class="comment-avatar">{{item.authorAvatar}}</view>
+        <view class="comment-body">
+          <view class="comment-meta">
+            <text class="comment-name">{{item.author}}</text>
+            <text class="comment-time">{{item.timeText}}</text>
+          </view>
+          <view class="comment-content">{{item.content}}</view>
+        </view>
+        <view class="comment-del" data-id="{{item.id}}" bindtap="deleteComment">×</view>
+      </view>
+    </view>
+    <view wx:else class="comment-empty">还没有评论，来说两句吧</view>
+  </view>
+
+  <!-- 编辑弹层 -->
+  <view wx:if="{{showEdit}}" class="mask" bindtap="closeEdit">
+    <view class="edit-panel" catchtap="noop">
+      <view class="edit-title">编辑菜品</view>
+      <scroll-view scroll-y class="edit-body">
+        <view class="edit-photo" bindtap="changePhoto">
+          <image src="{{edit.image}}" mode="aspectFill" />
+          <text class="edit-photo-tip">点此更换照片</text>
+        </view>
+        <view class="field"><view class="field-label">菜名</view><input class="field-input" value="{{edit.name}}" bindinput="onEditInput" data-key="name" /></view>
+        <view class="field"><view class="field-label">主要食材（顿号分隔）</view><input class="field-input" value="{{edit.ingredients}}" bindinput="onEditInput" data-key="ingredients" /></view>
+        <view class="field">
+          <view class="field-label">分类</view>
+          <picker mode="selector" range="{{categories}}" value="{{edit.catIndex}}" bindchange="onCatChange">
+            <view class="field-input picker">{{categories[edit.catIndex]}}</view>
+          </picker>
+        </view>
+        <view class="field"><view class="field-label">价格（元）</view><input class="field-input" type="number" value="{{edit.price}}" bindinput="onEditInput" data-key="price" /></view>
+        <view class="edit-hint">店主管理码：<input class="code-mini" type="text" password value="{{edit.code}}" bindinput="onEditInput" data-key="code" placeholder="123456" /></view>
+      </scroll-view>
+      <view class="edit-actions">
+        <view class="edit-cancel" bindtap="closeEdit">取消</view>
+        <view class="edit-save" bindtap="saveEdit">保存</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-bar">
+    <view class="bar-left" bindtap="goCart">
+      <text class="bar-cart">🛒</text>
+      <text class="bar-cart-label">购物车({{cartCount}})</text>
+    </view>
+    <view class="stepper">
+      <view wx:if="{{qty > 0}}" class="step-btn minus" bindtap="onMinus">−</view>
+      <text wx:if="{{qty > 0}}" class="step-qty">{{qty}}</text>
+      <view class="step-btn plus" bindtap="onPlus">+</view>
+    </view>
+    <view class="bar-add" bindtap="addAndCart">加入购物车</view>
+  </view>
+</view>

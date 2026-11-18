@@ -1,0 +1,36 @@
+<view class="page">
+  <view class="intro">
+    <view class="intro-title">大家最爱点什么</view>
+    <view class="intro-desc">按菜品分类统计点单次数，数据来自历史订单</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="inline-loading">统计中…</view>
+
+  <block wx:elif="{{groupList.length > 0}}">
+    <!-- 分类切换 -->
+    <scroll-view class="cat-scroll" scroll-x>
+      <view wx:for="{{groupList}}" wx:key="category"
+        class="cat-chip {{currentCat === item.category ? 'active' : ''}}"
+        data-cat="{{item.category}}" bindtap="onCat">{{item.category}} <text class="cat-num">{{item.list.length}}</text></view>
+    </scroll-view>
+
+    <!-- 榜单 -->
+    <view class="rank-list" wx:if="{{currentGroup}}">
+      <view class="rank-item" wx:for="{{currentGroup.list}}" wx:key="dishName" data-id="{{item.dishId}}" bindtap="goDetail">
+        <view class="rank-no {{index < 3 ? 'top' : ''}}">{{index + 1}}</view>
+        <image class="rank-img" src="{{item.image || '/assets/images/placeholder.jpg'}}" mode="aspectFill" lazy-load />
+        <view class="rank-info">
+          <view class="rank-name">{{item.dishName}}</view>
+          <view class="rank-bar-wrap"><view class="rank-bar" style="width:{{item.percent}}%"></view></view>
+        </view>
+        <view class="rank-count">{{item.qty}}<text class="unit">份</text></view>
+      </view>
+    </view>
+  </block>
+
+  <view wx:else class="state-wrap">
+    <text class="state-icon">📊</text>
+    <text class="state-title">暂无点单数据</text>
+    <text class="state-desc">有订单后这里会显示各分类的点单排行</text>
+  </view>
+</view>

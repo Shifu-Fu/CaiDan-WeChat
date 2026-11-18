@@ -1,0 +1,48 @@
+<view class="page">
+  <view class="intro">
+    <view class="intro-title">今天想吃点什么？</view>
+    <view class="intro-desc">告诉小助手你的口味和想法，从 192 道菜里帮你挑</view>
+  </view>
+
+  <!-- 快捷场景 -->
+  <view class="quick-title">快速选择</view>
+  <view class="quick-grid">
+    <view class="quick-card" wx:for="{{presets}}" wx:key="label" data-prompt="{{item.prompt}}" bindtap="usePreset">
+      <text class="quick-emoji">{{item.emoji}}</text>
+      <text class="quick-label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <!-- 自定义输入 -->
+  <view class="input-area">
+    <textarea class="ask-input" placeholder="例如：想吃点清淡的，不要太油腻，有两三个荤菜就行" value="{{question}}" bindinput="onInput" maxlength="200" auto-height />
+    <view class="input-foot">
+      <text class="char-count">{{question.length}}/200</text>
+      <view class="ask-btn {{loading?'disabled':''}}" bindtap="askLLM">{{loading ? '推荐中…' : '帮我推荐'}}</view>
+    </view>
+  </view>
+
+  <!-- 加载 -->
+  <view wx:if="{{loading}}" class="loading-wrap">
+    <view class="loading-dots"><text>·</text><text>·</text><text>·</text></view>
+    <text class="loading-text">正在从菜单里挑选…</text>
+  </view>
+
+  <!-- 推荐结果 -->
+  <view wx:if="{{resultText && !loading}}" class="result-area">
+    <view class="result-text">{{resultText}}</view>
+    <view wx:if="{{recommended.length > 0}}" class="rec-list">
+      <view class="rec-title">为你挑出的菜</view>
+      <view class="rec-item" wx:for="{{recommended}}" wx:key="id" data-id="{{item.id}}" bindtap="goDetail">
+        <image class="rec-img" src="{{item.image}}" mode="aspectFill" lazy-load />
+        <view class="rec-info">
+          <view class="rec-name">{{item.name}}</view>
+          <view class="rec-price"><text class="dec">¥</text>{{item.price}}</view>
+        </view>
+        <view class="rec-add" data-id="{{item.id}}" catchtap="quickAdd">+</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{errorMsg}}" class="error-tip">{{errorMsg}}</view>
+</view>

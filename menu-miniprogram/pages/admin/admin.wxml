@@ -1,0 +1,54 @@
+<view class="page">
+  <!-- 未验证：输入管理码 -->
+  <view wx:if="{{!verified}}" class="login-box">
+    <view class="login-title">店主验证</view>
+    <view class="login-desc">输入管理码查看全部订单</view>
+    <input class="code-input" type="text" password value="{{code}}" bindinput="onCodeInput" placeholder="管理码" />
+    <view class="login-btn" bindtap="verify">进入订单管理</view>
+    <view wx:if="{{errMsg}}" class="err-tip">{{errMsg}}</view>
+    <view class="login-hint">初始管理码为 123456，可在数据库中修改</view>
+  </view>
+
+  <!-- 已验证：订单列表 -->
+  <block wx:else>
+    <view class="admin-head">
+      <view class="head-left">
+        <view class="head-title">全部订单</view>
+        <view class="head-sub">共 {{orders.length}} 笔 · 今日营业额 ¥{{todayTotal}}</view>
+      </view>
+      <view class="logout" bindtap="logout">退出</view>
+    </view>
+
+    <view wx:if="{{loading}}" class="inline-loading">加载中…</view>
+
+    <view wx:elif="{{orders.length > 0}}">
+      <view class="order-card" wx:for="{{orders}}" wx:key="id">
+        <view class="customer-row">
+          <image class="customer-avatar" src="{{item.customerAvatar || '/assets/images/default-avatar.png'}}" mode="aspectFill" />
+          <view class="customer-info">
+            <view class="customer-name">{{item.customerName}}</view>
+            <view class="order-no">#{{item.id}} · {{item.tableText}}</view>
+          </view>
+          <view class="order-badge">{{item.statusText}}</view>
+        </view>
+        <view class="order-dishes">
+          <view class="dish-line" wx:for="{{item.items}}" wx:for-item="d" wx:key="id">
+            <text class="dish-name">{{d.name}}</text>
+            <text class="dish-qty">×{{d.qty}}</text>
+            <text class="dish-price">¥{{d.sub}}</text>
+          </view>
+        </view>
+        <view class="order-foot">
+          <text class="order-time">{{item.timeText}}</text>
+          <text class="order-total">合计 ¥{{item.total}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:else class="state-wrap">
+      <text class="state-icon">📋</text>
+      <text class="state-title">暂无订单</text>
+      <text class="state-desc">顾客下单后会显示在这里，下拉可刷新</text>
+    </view>
+  </block>
+</view>

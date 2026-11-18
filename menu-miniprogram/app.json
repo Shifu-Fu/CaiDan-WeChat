@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/menu/menu",
+    "pages/ingredients/ingredients",
+    "pages/recommend/recommend",
+    "pages/cart/cart",
+    "pages/profile/profile",
+    "pages/recognize/recognize",
+    "pages/detail/detail",
+    "pages/admin/admin",
+    "pages/ranking/ranking"
+  ],
+  "window": {
+    "navigationBarTitleText": "家常菜点单",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f6f8",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#8a8f98",
+    "selectedColor": "#e05a36",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/menu/menu", "text": "点菜" },
+      { "pagePath": "pages/ingredients/ingredients", "text": "选食材" },
+      { "pagePath": "pages/recommend/recommend", "text": "推荐" },
+      { "pagePath": "pages/cart/cart", "text": "购物车" },
+      { "pagePath": "pages/profile/profile", "text": "我的" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,101 @@
+.page { padding-bottom: 160rpx; min-height: 100vh; }
+.hero-img { width: 100%; height: 560rpx; display: block; background: #f0f0f0; }
+.detail-card {
+  background: #fff;
+  border-radius: 28rpx 28rpx 0 0;
+  margin-top: -28rpx;
+  position: relative;
+  padding: 32rpx 32rpx 40rpx;
+  min-height: 400rpx;
+}
+.detail-head { display: flex; justify-content: space-between; align-items: baseline; }
+.detail-name { font-size: 40rpx; font-weight: 500; color: #222; }
+.detail-price { color: #e05a36; font-size: 44rpx; font-weight: 500; }
+.detail-price .dec { font-size: 28rpx; }
+.detail-meta { margin-top: 16rpx; }
+.cat-tag {
+  display: inline-block;
+  background: #fdf0ec;
+  color: #e05a36;
+  font-size: 22rpx;
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
+}
+.block { margin-top: 36rpx; }
+.block-title { font-size: 28rpx; font-weight: 500; color: #333; margin-bottom: 16rpx; }
+.block-text { font-size: 26rpx; color: #888; line-height: 1.7; }
+.ing-tags { display: flex; flex-wrap: wrap; gap: 14rpx; }
+.ing-tag {
+  background: #f2f3f5;
+  color: #555;
+  font-size: 24rpx;
+  padding: 10rpx 24rpx;
+  border-radius: 24rpx;
+}
+
+.bottom-bar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 120rpx;
+  background: #fff;
+  border-top: 1rpx solid #eee;
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx;
+  gap: 20rpx;
+  z-index: 50;
+}
+.bar-left { display: flex; flex-direction: column; align-items: center; width: 90rpx; }
+.bar-cart { font-size: 44rpx; line-height: 1; }
+.bar-cart-label { font-size: 18rpx; color: #888; margin-top: 4rpx; }
+.bottom-bar .stepper { flex: none; }
+.bar-add {
+  flex: 1;
+  background: #e05a36;
+  color: #fff;
+  text-align: center;
+  padding: 24rpx 0;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+}
+
+/* 编辑入口 */
+.edited-tag { font-size: 20rpx; color: #999; background: #f2f3f5; padding: 6rpx 16rpx; border-radius: 20rpx; margin-left: 12rpx; }
+.edit-link { margin-left: auto; font-size: 24rpx; color: #e05a36; padding: 6rpx 12rpx; }
+
+/* 评论区 */
+.comment-section { background: #fff; margin: 16rpx 24rpx; border-radius: 16rpx; padding: 24rpx; }
+.comment-head { border-bottom: 1rpx solid #f0f0f0; padding-bottom: 12rpx; }
+.comment-count { color: #e05a36; font-size: 24rpx; margin-left: 8rpx; }
+.comment-compose { display: flex; flex-wrap: wrap; gap: 12rpx; padding: 20rpx 0; }
+.comment-author { width: 100%; background: #f5f6f8; border-radius: 10rpx; padding: 16rpx 20rpx; font-size: 24rpx; }
+.comment-input { flex: 1; background: #f5f6f8; border-radius: 10rpx; padding: 16rpx 20rpx; font-size: 26rpx; min-width: 0; }
+.comment-send { background: #e05a36; color: #fff; font-size: 25rpx; padding: 16rpx 28rpx; border-radius: 10rpx; }
+.comment-item { display: flex; align-items: flex-start; padding: 18rpx 0; border-top: 1rpx solid #f5f5f5; }
+.comment-avatar { width: 60rpx; height: 60rpx; border-radius: 50%; background: #fdf0ec; color: #e05a36; display: flex; align-items: center; justify-content: center; font-size: 26rpx; flex: none; }
+.comment-body { flex: 1; margin-left: 16rpx; min-width: 0; }
+.comment-meta { display: flex; align-items: center; gap: 14rpx; }
+.comment-name { font-size: 25rpx; color: #333; font-weight: 500; }
+.comment-time { font-size: 20rpx; color: #aaa; }
+.comment-content { font-size: 26rpx; color: #444; line-height: 1.5; margin-top: 8rpx; word-break: break-all; }
+.comment-del { font-size: 36rpx; color: #ccc; padding: 0 8rpx; line-height: 1; }
+.comment-empty { text-align: center; color: #bbb; font-size: 24rpx; padding: 30rpx 0; }
+
+/* 编辑弹层 */
+.mask { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 40rpx; }
+.edit-panel { width: 100%; background: #fff; border-radius: 20rpx; overflow: hidden; }
+.edit-title { font-size: 32rpx; font-weight: 500; color: #222; padding: 28rpx; border-bottom: 1rpx solid #f0f0f0; text-align: center; }
+.edit-body { max-height: 70vh; padding: 8rpx 28rpx; }
+.edit-photo { position: relative; margin: 16rpx 0; }
+.edit-photo image { width: 100%; height: 260rpx; border-radius: 12rpx; background: #f0f0f0; }
+.edit-photo-tip { display: block; text-align: center; color: #e05a36; font-size: 24rpx; padding: 12rpx; }
+.field { margin-top: 20rpx; }
+.field-label { font-size: 24rpx; color: #888; margin-bottom: 10rpx; }
+.field-input { background: #f5f6f8; border-radius: 10rpx; padding: 20rpx; font-size: 27rpx; color: #222; }
+.field-input.picker { color: #333; }
+.edit-hint { margin-top: 24rpx; font-size: 24rpx; color: #888; display: flex; align-items: center; gap: 12rpx; }
+.code-mini { flex: 1; background: #f5f6f8; border-radius: 8rpx; padding: 12rpx 16rpx; font-size: 25rpx; }
+.edit-actions { display: flex; border-top: 1rpx solid #f0f0f0; }
+.edit-cancel, .edit-save { flex: 1; text-align: center; padding: 28rpx 0; font-size: 29rpx; }
+.edit-cancel { color: #999; }
+.edit-save { color: #fff; background: #e05a36; }

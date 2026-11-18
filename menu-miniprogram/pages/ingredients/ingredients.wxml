@@ -1,0 +1,71 @@
+<view class="page">
+  <view class="intro">
+    <view class="intro-title">你有什么食材？</view>
+    <view class="intro-desc">勾选家里现有的食材，帮你找出能做的菜</view>
+  </view>
+
+  <!-- 搜索食材 -->
+  <view class="searchbar">
+    <text class="search-icon">⌕</text>
+    <input class="search-input" placeholder="搜索食材" value="{{keyword}}" bindinput="onSearch" />
+  </view>
+
+  <!-- 食材标签网格（默认折叠3排） -->
+  <view class="ing-section">
+    <view class="ing-grid">
+      <view wx:for="{{displayIngredients}}" wx:key="*this"
+        class="ing-chip {{item.selected ? 'selected' : ''}}"
+        data-name="{{item.name}}" bindtap="toggle">
+        <text class="ing-dot"></text>{{item.name}}
+      </view>
+    </view>
+    <view wx:if="{{canExpand}}" class="expand-btn" bindtap="toggleExpand">
+      <text>{{expanded ? '收起食材' : '展开全部 ' + totalCount + ' 种'}}</text>
+      <text class="arrow {{expanded ? 'up' : ''}}">⌄</text>
+    </view>
+  </view>
+
+  <!-- 已选食材（吸顶显示） -->
+  <view class="selected-bar" wx:if="{{selected.length > 0}}">
+    <view class="selected-label">已选 {{selected.length}} 种：</view>
+    <view class="selected-tags">
+      <text class="selected-tag" wx:for="{{selected}}" wx:key="*this" data-name="{{item}}" bindtap="unselect">{{item}} ×</text>
+    </view>
+  </view>
+
+  <!-- 结果：紧跟已选，不用来回下滑 -->
+  <block wx:if="{{selected.length > 0}}">
+    <view class="result-header">
+      <view class="result-title">能做的菜 <text class="result-num">{{matched.length}}</text></view>
+      <view class="result-switch">
+        <text class="switch-label {{matchMode==='any'?'active':''}}" data-mode="any" bindtap="setMode">含任意一种</text>
+        <text class="switch-label {{matchMode==='all'?'active':''}}" data-mode="all" bindtap="setMode">需全部包含</text>
+      </view>
+    </view>
+
+    <view class="match-list" wx:if="{{matched.length > 0}}">
+      <view class="match-item" wx:for="{{matched}}" wx:key="id" data-id="{{item.id}}" bindtap="goDetail">
+        <image class="match-img" src="{{item.image}}" mode="aspectFill" lazy-load />
+        <view class="match-info">
+          <view class="match-name">{{item.name}}</view>
+          <view class="match-ing">用到：{{item.matchedIng}}</view>
+          <view class="match-price"><text class="dec">¥</text>{{item.price}}</view>
+        </view>
+        <view class="match-add" data-id="{{item.id}}" catchtap="quickAdd">+</view>
+      </view>
+    </view>
+
+    <view wx:else class="state-wrap">
+      <text class="state-icon">○</text>
+      <text class="state-title">暂时没有匹配的菜</text>
+      <text class="state-desc">试试减少食材，或切换到「含任意一种」</text>
+    </view>
+  </block>
+
+  <!-- 未选提示 -->
+  <view wx:else class="state-wrap">
+    <text class="state-icon">◔</text>
+    <text class="state-title">还没选食材</text>
+    <text class="state-desc">从上面勾选食材，立即看到能做的菜</text>
+  </view>
+</view>

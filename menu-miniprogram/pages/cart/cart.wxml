@@ -1,0 +1,45 @@
+<view class="page">
+  <block wx:if="{{items.length > 0}}">
+    <view class="table-row">
+      <text class="table-label">桌号 / 备注</text>
+      <input class="table-input" placeholder="选填，如「3号桌」「少辣」" value="{{tableNo}}" bindinput="onTableInput" />
+    </view>
+
+    <view class="cart-list">
+      <view class="cart-item" wx:for="{{items}}" wx:key="id">
+        <image class="cart-img" src="{{item.image}}" mode="aspectFill" />
+        <view class="cart-info">
+          <view class="cart-name">{{item.name}}</view>
+          <view class="cart-price"><text class="dec">¥</text>{{item.price}}</view>
+        </view>
+        <view class="stepper">
+          <view class="step-btn minus" data-id="{{item.id}}" bindtap="onMinus">−</view>
+          <text class="step-qty">{{item.qty}}</text>
+          <view class="step-btn plus" data-id="{{item.id}}" bindtap="onPlus">+</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="summary">
+      <view class="sum-row"><text>菜品合计</text><text>¥{{subtotal}}</text></view>
+      <view class="sum-row total"><text>合计</text><text class="total-price">¥{{subtotal}}</text></view>
+    </view>
+
+    <view class="clear-row" bindtap="clearAll">清空购物车</view>
+  </block>
+
+  <view wx:else class="state-wrap">
+    <text class="state-icon">🛒</text>
+    <text class="state-title">购物车是空的</text>
+    <text class="state-desc">去点几道喜欢的菜吧</text>
+    <view class="go-menu" bindtap="goMenu">去点菜</view>
+  </view>
+
+  <view wx:if="{{items.length > 0}}" class="submit-bar">
+    <view class="submit-info">
+      <view class="submit-total"><text class="dec">¥</text>{{subtotal}}</view>
+      <view class="submit-count">共 {{count}} 件</view>
+    </view>
+    <view class="submit-btn {{submitting?'disabled':''}}" bindtap="submitOrder">{{submitting ? '提交中…' : '提交订单'}}</view>
+  </view>
+</view>

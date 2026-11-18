@@ -1,0 +1,60 @@
+<view class="page">
+  <!-- 搜索栏 -->
+  <view class="searchbar">
+    <text class="search-icon">⌕</text>
+    <input class="search-input" placeholder="搜索菜名，如「红烧肉」" value="{{keyword}}" bindinput="onSearch" confirm-type="search" />
+    <text wx:if="{{keyword}}" class="clear-btn" bindtap="clearSearch">×</text>
+    <view class="rank-entry" bindtap="goRanking">🏆 排行</view>
+  </view>
+
+  <!-- 分类 -->
+  <scroll-view class="category-scroll" scroll-x>
+    <view wx:for="{{categories}}" wx:key="*this"
+      class="category-chip {{currentCategory === item ? 'active' : ''}}"
+      data-cat="{{item}}" bindtap="onCategory">{{item}}</view>
+  </scroll-view>
+
+  <!-- 结果统计 -->
+  <view class="result-bar">
+    <text>共 {{filtered.length}} 道菜</text>
+    <text wx:if="{{currentCategory !== '全部'}}" class="result-cat">{{currentCategory}}</text>
+  </view>
+
+  <!-- 菜品网格 -->
+  <view class="dish-grid" wx:if="{{filtered.length > 0}}">
+    <view class="dish-card" wx:for="{{filtered}}" wx:key="id" data-id="{{item.id}}" bindtap="onDishTap">
+      <image class="dish-image" src="{{item.image}}" mode="aspectFill" lazy-load />
+      <view class="dish-body">
+        <view class="dish-name">{{item.name}}</view>
+        <view class="dish-tags">{{item.ingredients.length > 0 ? '主料：' + item.ingredientsDisplay : item.category}}</view>
+        <view class="dish-bottom">
+          <view class="dish-price"><text class="dec">¥</text>{{item.price}}</view>
+          <view class="stepper" catchtap="noop">
+            <view wx:if="{{item.qty > 0}}" class="step-btn minus" data-id="{{item.id}}" catchtap="onMinus">−</view>
+            <text wx:if="{{item.qty > 0}}" class="step-qty">{{item.qty}}</text>
+            <view class="step-btn plus" data-id="{{item.id}}" catchtap="onPlus">+</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="state-wrap">
+    <text class="state-icon">○</text>
+    <text class="state-title">没有找到相关菜品</text>
+    <text class="state-desc">换个关键词，或者去「选食材」试试</text>
+  </view>
+
+  <!-- 购物车悬浮条 -->
+  <view wx:if="{{cartCount > 0}}" class="cart-bar" bindtap="goCart">
+    <view class="cart-badge">
+      <text class="cart-icon">🛒</text>
+      <text class="cart-count">{{cartCount}}</text>
+    </view>
+    <view class="cart-info">
+      <view class="cart-total"><text class="dec">¥</text>{{cartTotal}}</view>
+      <view class="cart-sub">已选 {{cartCount}} 件 · 去结算</view>
+    </view>
+    <view class="cart-go">去结算 ›</view>
+  </view>
+</view>

@@ -1,0 +1,54 @@
+.page { padding-bottom: 140rpx; min-height: 100vh; }
+.search-icon { font-size: 40rpx; color: #999; margin-right: 12rpx; line-height: 1; }
+.clear-btn { font-size: 40rpx; color: #aaa; margin-left: 12rpx; padding: 0 8rpx; }
+.rank-entry { font-size: 22rpx; color: #e05a36; background: #fdf0ec; padding: 12rpx 16rpx; border-radius: 24rpx; margin-left: 12rpx; flex: none; white-space: nowrap; }
+.result-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 24rpx 8rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.result-cat { color: #e05a36; }
+
+.cart-bar {
+  position: fixed;
+  left: 20rpx;
+  right: 20rpx;
+  bottom: 24rpx;
+  height: 108rpx;
+  background: #2b2d33;
+  border-radius: 54rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 16rpx 0 24rpx;
+  box-shadow: 0 8rpx 30rpx rgba(0,0,0,0.25);
+  z-index: 50;
+}
+.cart-badge { position: relative; width: 88rpx; height: 88rpx; }
+.cart-icon { font-size: 56rpx; line-height: 88rpx; }
+.cart-count {
+  position: absolute;
+  top: 4rpx;
+  right: -4rpx;
+  min-width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+  background: #e05a36;
+  color: #fff;
+  border-radius: 18rpx;
+  font-size: 22rpx;
+  padding: 0 8rpx;
+}
+.cart-info { flex: 1; margin-left: 20rpx; }
+.cart-total { color: #fff; font-size: 40rpx; font-weight: 500; line-height: 1.1; }
+.cart-total .dec { font-size: 26rpx; }
+.cart-sub { color: #aaa; font-size: 22rpx; margin-top: 4rpx; }
+.cart-go {
+  background: #e05a36;
+  color: #fff;
+  font-size: 28rpx;
+  padding: 20rpx 32rpx;
+  border-radius: 40rpx;
+}

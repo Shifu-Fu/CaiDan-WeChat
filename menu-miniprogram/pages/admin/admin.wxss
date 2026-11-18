@@ -1,0 +1,34 @@
+.page { min-height: 100vh; }
+.login-box { margin: 60rpx 40rpx; background: #fff; border-radius: 20rpx; padding: 48rpx 40rpx; }
+.login-title { font-size: 36rpx; font-weight: 500; color: #222; }
+.login-desc { font-size: 25rpx; color: #999; margin: 12rpx 0 36rpx; }
+.code-input { background: #f5f6f8; border-radius: 12rpx; padding: 24rpx; font-size: 30rpx; }
+.login-btn { background: #e05a36; color: #fff; text-align: center; padding: 26rpx; border-radius: 44rpx; font-size: 30rpx; margin-top: 32rpx; }
+.err-tip { color: #c0392b; font-size: 24rpx; margin-top: 20rpx; }
+.login-hint { color: #bbb; font-size: 22rpx; margin-top: 28rpx; text-align: center; line-height: 1.5; }
+
+.admin-head { display: flex; justify-content: space-between; align-items: center; padding: 32rpx 28rpx 16rpx; }
+.head-title { font-size: 36rpx; font-weight: 500; color: #222; }
+.head-sub { font-size: 24rpx; color: #888; margin-top: 8rpx; }
+.logout { font-size: 25rpx; color: #999; padding: 12rpx 24rpx; border: 1rpx solid #ddd; border-radius: 24rpx; }
+.inline-loading { text-align: center; color: #999; font-size: 25rpx; padding: 60rpx; }
+
+.order-card { background: #fff; border-radius: 16rpx; margin: 16rpx 24rpx; padding: 24rpx; box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.03); }
+.customer-row { display: flex; align-items: center; padding-bottom: 16rpx; border-bottom: 1rpx solid #f0f0f0; }
+.customer-avatar { width: 72rpx; height: 72rpx; border-radius: 50%; background: #eeeef2; flex: none; }
+.customer-info { flex: 1; margin-left: 18rpx; min-width: 0; }
+.customer-name { font-size: 30rpx; font-weight: 500; color: #222; margin-bottom: 6rpx; }
+.order-no { font-size: 23rpx; color: #888; }
+.order-badge { font-size: 22rpx; color: #1D9E75; background: #E1F5EE; padding: 6rpx 18rpx; border-radius: 20rpx; flex: none; }
+.order-dishes { padding: 16rpx 0; }
+.dish-line { display: flex; align-items: center; padding: 6rpx 0; font-size: 26rpx; }
+.dish-name { flex: 1; color: #444; }
+.dish-qty { color: #999; width: 80rpx; text-align: right; }
+.dish-price { color: #e05a36; width: 110rpx; text-align: right; }
+.order-foot { display: flex; justify-content: space-between; align-items: center; border-top: 1rpx solid #f0f0f0; padding-top: 16rpx; }
+.order-time { font-size: 22rpx; color: #aaa; }
+.order-total { font-size: 28rpx; color: #e05a36; font-weight: 500; }
+.state-wrap { display: flex; flex-direction: column; align-items: center; padding: 100rpx 40rpx; }
+.state-icon { font-size: 72rpx; }
+.state-title { font-size: 30rpx; color: #666; margin-top: 20rpx; }
+.state-desc { font-size: 24rpx; color: #aaa; margin-top: 10rpx; }
